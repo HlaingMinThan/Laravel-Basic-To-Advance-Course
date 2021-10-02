@@ -1,3 +1,5 @@
 body{
-    background-color: orange;
+    background-color: white;
+    max-width: 600px;
+    margin: auto;
 }
