@@ -20,7 +20,7 @@
 
 <body>
     <article>
-        <h1><a href="/blog">First Blog</a></h1>
+        <h1><a href="/blogs/first-blog">First Blog</a></h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, eveniet minus. Officia ab a
             exercitationem sed labore fugiat quo aperiam. Ullam temporibus rem eum qui, doloribus distinctio,
             perspiciatis non officia, illum minus quidem? Magni quaerat culpa at cum est soluta natus pariatur iure
@@ -31,7 +31,7 @@
             provident magni nihil.</p>
     </article>
     <article>
-        <h1><a href="/blog">Second Blog</a></h1>
+        <h1><a href="/blogs/second-blog">Second Blog</a></h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, eveniet minus. Officia ab a
             exercitationem sed labore fugiat quo aperiam. Ullam temporibus rem eum qui, doloribus distinctio,
             perspiciatis non officia, illum minus quidem? Magni quaerat culpa at cum est soluta natus pariatur iure
@@ -42,7 +42,7 @@
             provident magni nihil.</p>
     </article>
     <article>
-        <h1><a href="/blog">Third Blog</a></h1>
+        <h1><a href="/blogs/third-blog">Third Blog</a></h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, eveniet minus. Officia ab a
             exercitationem sed labore fugiat quo aperiam. Ullam temporibus rem eum qui, doloribus distinctio,
             perspiciatis non officia, illum minus quidem? Magni quaerat culpa at cum est soluta natus pariatur iure
