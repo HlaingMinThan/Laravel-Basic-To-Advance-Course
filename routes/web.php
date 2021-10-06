@@ -22,7 +22,11 @@ Route::get('/blogs/{blog}', function ($slug) {
     if (!file_exists($path)) {
         return redirect('/');//dd,abort,redirect
     }
-    $blog=file_get_contents($path);
+    $blog=cache()->remember("posts.$slug", 120, function () use ($path) {
+        var_dump('file get contents');
+        return file_get_contents($path);
+    });
+    
     return view('blog', [
         'blog'=>$blog
     ]);
