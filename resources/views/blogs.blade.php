@@ -1,40 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-    <meta
-        http-equiv="X-UA-Compatible"
-        content="ie=edge"
-    >
-    <title>Blog</title>
-    <link
-        rel="stylesheet"
-        href="/css/app.css"
-    >
-</head>
+@section('title')
+<title>All blogs</title>
+@endsection
 
-<body>
-    @foreach($blogs as $blog)
+@section('content')
+@foreach($blogs as $blog)
+<div>
+    <h1><a href="blogs/{{$blog->slug}}">
+            {{$blog->title}}
+        </a></h1>
     <div>
-        <h1><a href="blogs/{{$blog->slug}}">
-                {{$blog->title}}
-            </a></h1>
-        <div>
-            <p>
-                published at -
-                {{$blog->date}}
-            </p>
-            <p>
-                {{$blog->intro}}
-            </p>
-        </div>
+        <p>
+            published at -
+            {{$blog->date}}
+        </p>
+        <p>
+            {{$blog->intro}}
+        </p>
     </div>
-    @endforeach
-</body>
-
-</html>
+</div>
+@endforeach
+@endsection
