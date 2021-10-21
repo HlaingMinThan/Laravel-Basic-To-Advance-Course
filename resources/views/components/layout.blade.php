@@ -11,7 +11,7 @@
         http-equiv="X-UA-Compatible"
         content="ie=edge"
     >
-    @yield('title')
+    {{$title}}
     <link
         rel="stylesheet"
         href="/css/app.css"
@@ -19,12 +19,8 @@
 </head>
 
 <body>
-    <nav>
-        <li><a href="">Main</a></li>
-        <li><a href="">about</a></li>
-        <li><a href="">contact</a></li>
-    </nav>
-    @yield('content')
+    <x-navbar />
+    {{$slot}}
 </body>
 
 </html>
