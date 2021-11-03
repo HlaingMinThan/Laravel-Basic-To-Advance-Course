@@ -10,7 +10,7 @@
         <div>
             <p>
                 published at -
-                {{$blog->date}}
+                {{$blog->created_at->diffForHumans()}}
             </p>
             <p>
                 {{$blog->intro}}
