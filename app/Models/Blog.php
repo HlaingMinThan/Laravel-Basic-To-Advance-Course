@@ -12,4 +12,9 @@ class Blog extends Model
     protected $guarded=[];
     //allow specific column in blogs table
     // protected $fillable=['title','intro','body'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
