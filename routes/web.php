@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('blogs', [
-        'blogs'=>Blog::all()
+        'blogs'=>Blog::latest()->get()
     ]);
 });
 
