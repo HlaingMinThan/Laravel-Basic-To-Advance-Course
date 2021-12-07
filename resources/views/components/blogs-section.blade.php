@@ -22,7 +22,7 @@
                 @foreach ($categories as $category)
                 <li><a
                         class="dropdown-item"
-                        href="/categories/{{$category->slug}}"
+                        href="/?category={{$category->slug}}"
                     >{{$category->name}}</a></li>
                 @endforeach
             </ul>
