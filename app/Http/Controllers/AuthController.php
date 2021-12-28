@@ -10,4 +10,8 @@ class AuthController extends Controller
     {
         return view('register.create');
     }
+    public function store()
+    {
+        dd(request()->all());
+    }
 }
