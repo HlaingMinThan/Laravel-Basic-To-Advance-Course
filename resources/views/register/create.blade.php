@@ -17,7 +17,11 @@
                                 class="form-control"
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
+                                value="{{old('name')}}"
                             >
+                            @error('name')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label
@@ -30,7 +34,11 @@
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 name="username"
+                                value="{{old('username')}}"
                             >
+                            @error('username')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label
@@ -43,7 +51,11 @@
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 name="email"
+                                value="{{old('email')}}"
                             >
+                            @error('email')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label
@@ -56,6 +68,9 @@
                                 class="form-control"
                                 id="exampleInputPassword1"
                             >
+                            @error('password')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <button
                             type="submit"
