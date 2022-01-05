@@ -12,6 +12,7 @@
                                 class="form-label"
                             >Name</label>
                             <input
+                                required
                                 name="name"
                                 type="text"
                                 class="form-control"
