@@ -9,10 +9,31 @@
                 href="/#blogs"
                 class="nav-link"
             >Blogs</a>
+            @guest
             <a
                 href="/register"
                 class="nav-link"
             >Register</a>
+            @else
+            <a
+                href=""
+                class="nav-link"
+            >Welcome {{auth()->user()->name}}</a>
+            @endguest
+
+            @auth
+            <form
+                action="/logout"
+                method="POST"
+            >
+                @csrf
+                <button
+                    type="submit"
+                    href=""
+                    class="nav-link btn btn-link"
+                >Logout</button>
+            </form>
+            @endauth
             <a
                 href="#subscribe"
                 class="nav-link"
