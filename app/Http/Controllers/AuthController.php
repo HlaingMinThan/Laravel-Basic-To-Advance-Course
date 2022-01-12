@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function create()
     {
-        return view('register.create');
+        return view('auth.register');
     }
     public function store()
     {
@@ -27,6 +27,27 @@ class AuthController extends Controller
         auth()->login($user);
         
         return redirect('/')->with('success', 'Welcome Dear, '.$user->name);
+    }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function post_login()
+    {
+        //validation
+        $formData=request()->validate([
+            'email'=>['required','email','max:255',Rule::exists('users', 'email')],
+            'password'=>['required','min:8','max:255']
+        ], [
+            'email.required'=>'We need your email address.',
+            'password.min'=>'Password should be more than 8 characters.'
+        ]);
+        dd($formData);
+        //auth attempt
+          //if user credentials correct -> redirect home
+          //if user credentials fail -> redirect back to form with error
     }
 
     public function logout()
