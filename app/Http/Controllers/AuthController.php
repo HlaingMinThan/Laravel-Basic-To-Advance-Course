@@ -44,10 +44,16 @@ class AuthController extends Controller
             'email.required'=>'We need your email address.',
             'password.min'=>'Password should be more than 8 characters.'
         ]);
-        dd($formData);
-        //auth attempt
-          //if user credentials correct -> redirect home
-          //if user credentials fail -> redirect back to form with error
+        
+        //if user credentials correct -> redirect home
+        if (auth()->attempt($formData)) {
+            return redirect('/')->with('success', 'Welcome back');
+        } else {
+            //if user credentials fail -> redirect back to form with error
+            return redirect()->back()->withErrors([
+                'email'=>'User Credentials Wrong'
+            ]);
+        }
     }
 
     public function logout()
