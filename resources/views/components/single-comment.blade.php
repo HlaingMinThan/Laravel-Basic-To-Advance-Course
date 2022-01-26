@@ -1,6 +1,6 @@
 @props(['comment'])
 
-<div class="card d-flex p-3 my-3 shadow-sm">
+<div class="card  p-3 my-3 shadow-sm">
     <div class="d-flex">
         <div>
             <img
