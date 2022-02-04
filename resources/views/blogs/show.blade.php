@@ -21,6 +21,34 @@
             </div>
         </div>
     </div>
+    <section class="container">
+        <div class="col-md-8 mx-auto">
+            <x-card-wrapper
+                class="bg-secondary"
+                hidden
+            >
+                <form>
+                    <div class="mb-3">
+                        <textarea
+                            name=""
+                            cols="10"
+                            class="form-control border border-0"
+                            rows="5"
+                            placeholder="say something..."
+                        ></textarea>
+
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >Submit</button>
+                    </div>
+                </form>
+            </x-card-wrapper>
+        </div>
+    </section>
+
     <x-comments :comments="$blog->comments" />
     <x-subscribe />
     <x-blogs_you_may_like_section :randomBlogs="$randomBlogs" />
