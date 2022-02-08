@@ -10,6 +10,12 @@
                 class="nav-link"
             >Blogs</a>
             @auth
+            <img
+                src="{{auth()->user()->avatar}}"
+                width="50"
+                height="50"
+                class="rounded-circle"
+            >
             <a
                 href=""
                 class="nav-link"
