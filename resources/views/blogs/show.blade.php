@@ -14,6 +14,9 @@
                     <div><a href="/categories/{{$blog->category->slug}}"><span
                                 class="badge bg-primary">{{$blog->category->name}}</span></a></div>
                     <div class="text-secondary">{{$blog->created_at->diffForHumans()}}</div>
+                    <div class="text-secondary">
+                        <button class="btn btn-warning">subscribe</button>
+                    </div>
                 </div>
                 <p class="lh-md mt-3">
                     {{$blog->body}}
@@ -33,6 +36,5 @@
     @if ($blog->comments->count())
     <x-comments :comments="$blog->comments" />
     @endif
-    <x-subscribe />
     <x-blogs_you_may_like_section :randomBlogs="$randomBlogs" />
 </x-layout>
