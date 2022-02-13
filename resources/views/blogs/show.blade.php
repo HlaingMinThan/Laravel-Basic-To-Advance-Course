@@ -15,7 +15,16 @@
                                 class="badge bg-primary">{{$blog->category->name}}</span></a></div>
                     <div class="text-secondary">{{$blog->created_at->diffForHumans()}}</div>
                     <div class="text-secondary">
-                        <button class="btn btn-warning">subscribe</button>
+                        <form
+                            action=""
+                            method="POST"
+                        >
+                            @if (auth()->user()->isSubscribed($blog))
+                            <button class="btn btn-danger">unsubscribe</button>
+                            @else
+                            <button class="btn btn-warning">subscribe</button>
+                            @endif
+                        </form>
                     </div>
                 </div>
                 <p class="lh-md mt-3">
