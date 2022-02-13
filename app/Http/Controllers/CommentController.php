@@ -10,14 +10,14 @@ class CommentController extends Controller
     public function store(Blog $blog)
     {
         request()->validate([
-           'body'=>'required | min:10'
-       ]);
+            'body' => 'required | min:10'
+        ]);
         //comment store
         $blog->comments()->create([
-        'body'=>request('body'),
-        'user_id'=>auth()->id()
-       ]);
+            'body' => request('body'),
+            'user_id' => auth()->id()
+        ]);
 
-        return back();
+        return redirect('/blogs/' . $blog->slug);
     }
 }
