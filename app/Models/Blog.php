@@ -8,23 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    protected $with=['category','author'];
+    protected $with = ['category', 'author'];
 
 
-    public function scopeFilter($query, $filter)//Blog::latest()->filter()
+    public function scopeFilter($query, $filter) //Blog::latest()->filter()
     {
-        $query->when($filter['search']??false, function ($query, $search) {
+        $query->when($filter['search'] ?? false, function ($query, $search) {
             $query->where(function ($query) use ($search) {
-                $query->where('title', 'LIKE', '%'.$search.'%')
-                ->orWhere('body', 'LIKE', '%'.$search.'%');
+                $query->where('title', 'LIKE', '%' . $search . '%')
+                    ->orWhere('body', 'LIKE', '%' . $search . '%');
             });
         });
-        $query->when($filter['category']??false, function ($query, $slug) {
+        $query->when($filter['category'] ?? false, function ($query, $slug) {
             $query->whereHas('category', function ($query) use ($slug) {
                 $query->where('slug', $slug);
             });
         });
-        $query->when($filter['username']??false, function ($query, $username) {
+        $query->when($filter['username'] ?? false, function ($query, $username) {
             $query->whereHas('author', function ($query) use ($username) {
                 $query->where('username', $username);
             });
@@ -48,5 +48,14 @@ class Blog extends Model
     public function subscribers()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function unSubscribe()
+    {
+        $this->subscribers()->detach(auth()->id());
+    }
+    public function subscribe()
+    {
+        $this->subscribers()->attach(auth()->id());
     }
 }
