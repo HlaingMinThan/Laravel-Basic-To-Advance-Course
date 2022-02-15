@@ -24,7 +24,7 @@ class CommentController extends Controller
         $subscribers = $blog->subscribers->filter(fn ($subscriber) => $subscriber->id != auth()->id());
 
         $subscribers->each(function ($subscriber) use ($blog) {
-            Mail::to($subscriber->email)->send(new SubscriberMail($blog));
+            Mail::to($subscriber->email)->queue(new SubscriberMail($blog));
         });
 
         return redirect('/blogs/' . $blog->slug);
