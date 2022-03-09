@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <p class="lh-md mt-3">
-                    {{$blog->body}}
+                    {!!$blog->body!!}
                 </p>
             </div>
         </div>

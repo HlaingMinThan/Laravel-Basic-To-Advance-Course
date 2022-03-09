@@ -6,7 +6,7 @@
         id="{{$name}}"
         cols="30"
         rows="10"
-        class="form-control"
+        class="form-control editor"
     >{{old($name)}}</textarea>
     <x-error name="{{$name}}" />
 </x-form.input-wrapper>
