@@ -18,7 +18,7 @@
                     <td>{{$blog->title}}</td>
                     <td>{{$blog->intro}}</td>
                     <td><a
-                            href=""
+                            href="/admin/blogs/{{$blog->slug}}/edit"
                             class="btn btn-warning"
                         >Edit</a></td>
                     <td>

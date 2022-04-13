@@ -9,15 +9,16 @@ use Illuminate\Validation\Rule;
 
 class AdminBlogController extends Controller
 {
-    public function index(){
-        return view('admin.blogs.index',[
-            'blogs'=>Blog::latest()->paginate(6)
+    public function index()
+    {
+        return view('admin.blogs.index', [
+            'blogs' => Blog::latest()->paginate(6)
         ]);
     }
 
     public function create()
     {
-        return view('blogs.create', [
+        return view('admin.blogs.create', [
             'categories' => Category::all()
         ]);
     }
@@ -38,7 +39,16 @@ class AdminBlogController extends Controller
         return redirect('/');
     }
 
-    public function destroy(Blog $blog){
+    public function edit(Blog $blog)
+    {
+        return view('admin.blogs.edit', [
+            'blog' => $blog,
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function destroy(Blog $blog)
+    {
         $blog->delete();
         return back();
     }

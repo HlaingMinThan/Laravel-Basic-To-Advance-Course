@@ -1,4 +1,4 @@
-@props(['name'])
+@props(['name','value'=>''])
 <x-form.input-wrapper>
     <x-form.label :name="$name" />
     <textarea
@@ -7,6 +7,6 @@
         cols="30"
         rows="10"
         class="form-control editor"
-    >{{old($name)}}</textarea>
+    >{!!old($name,$value)!!}</textarea>
     <x-error name="{{$name}}" />
 </x-form.input-wrapper>
