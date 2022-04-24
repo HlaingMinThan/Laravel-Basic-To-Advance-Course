@@ -29,3 +29,4 @@ Route::post('/admin/blogs/store', [AdminBlogController::class, 'store'])->middle
 Route::delete('/admin/blogs/{blog:slug}/delete', [AdminBlogController::class, 'destroy'])->middleware('admin');
 
 Route::get('/admin/blogs/{blog:slug}/edit', [AdminBlogController::class, 'edit'])->middleware('admin');
+Route::patch('/admin/blogs/{blog:slug}/update', [AdminBlogController::class, 'update'])->middleware('admin');

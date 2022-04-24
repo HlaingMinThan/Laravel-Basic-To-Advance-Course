@@ -3,9 +3,10 @@
     <x-card-wrapper>
         <form
             enctype="multipart/form-data"
-            action="/admin/blogs/store"
+            action="/admin/blogs/{{$blog->slug}}/update"
             method="POST"
         >
+            @method('patch')
             @csrf
             <x-form.input
                 name="title"
