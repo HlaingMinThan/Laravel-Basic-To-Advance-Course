@@ -41,6 +41,8 @@
     >
         <div class="input-group mb-3">
             <input
+                value="{{request('query')}}"
+                name="query"
                 type="text"
                 autocomplete="false"
                 class="form-control"

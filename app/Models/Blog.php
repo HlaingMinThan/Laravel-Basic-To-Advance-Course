@@ -8,18 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    //allow everycolumn in blogs table
-    protected $guarded=[];
-    //allow specific column in blogs table
-    // protected $fillable=['title','intro','body'];
-    protected $with=['category','author'];
+
+    public function scopeSearch($query, $searchValue)
+    {
+        return $query
+            ->when($searchValue, function ($query) use ($searchValue) {
+                $query
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('title', 'Like', '%' . $searchValue . '%')
+                            ->orWhere('body', 'Like', '%' . $searchValue . '%');
+                    });
+            });
+    }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function author()
+    public function author() // user has many blogs
     {
         return $this->belongsTo(User::class, 'user_id');
     }
