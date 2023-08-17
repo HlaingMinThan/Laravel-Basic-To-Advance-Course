@@ -9,15 +9,27 @@ class Blog extends Model
 {
     use HasFactory;
 
-    public function scopeSearch($query, $searchValue)
+    public function scopeFilter($query, $filters)
     {
-        return $query
-            ->when($searchValue, function ($query) use ($searchValue) {
+        $query
+            ->when($filters['search'] ?? null, function ($query) use ($filters) {
                 $query
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('title', 'Like', '%' . $searchValue . '%')
-                            ->orWhere('body', 'Like', '%' . $searchValue . '%');
+                    ->where(function ($query) use ($filters) {
+                        $query->where('title', 'Like', '%' . $filters['search'] . '%')
+                            ->orWhere('body', 'Like', '%' . $filters['search'] . '%');
                     });
+            });
+        $query
+            ->when($filters['category'] ?? null, function ($query) use ($filters) {
+                $query->whereHas('category', function ($catQuery) use ($filters) {
+                    $catQuery->whereSlug($filters['category']);
+                });
+            });
+        $query
+            ->when($filters['author'] ?? null, function ($query) use ($filters) {
+                $query->whereHas('author', function ($autQuery) use ($filters) {
+                    $autQuery->whereUsername($filters['author']);
+                });
             });
     }
 

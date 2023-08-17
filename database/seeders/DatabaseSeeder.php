@@ -16,14 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
-        Blog::truncate();
-        Category::truncate();
-
-        $frontend=Category::factory()->create(['name'=>'frontend']);
-        $backend=Category::factory()->create(['name'=>'backend']);
-
-        Blog::factory(2)->create(['category_id'=>$frontend->id]);
-        Blog::factory(2)->create(['category_id'=>$backend->id]);
+        Blog::factory(100)->create();
     }
 }
