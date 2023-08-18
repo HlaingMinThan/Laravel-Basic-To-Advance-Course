@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -45,5 +46,15 @@ class User extends Authenticatable
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    protected function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] =  bcrypt($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value); //hlaingminthan => "Hlaingminthan"
     }
 }

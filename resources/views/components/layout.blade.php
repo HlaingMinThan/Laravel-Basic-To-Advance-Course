@@ -22,6 +22,16 @@
 
 <body id="home">
     <x-navbar />
+
+    @if (session()->has('success'))
+    <div
+        class="alert alert-success"
+        role="alert"
+    >
+        {{session('success')}}
+    </div>
+    @endif
+
     {{$slot}}
     <x-footer />
     <script
