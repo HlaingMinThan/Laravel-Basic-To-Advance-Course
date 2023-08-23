@@ -17,6 +17,36 @@
                 href="#subscribe"
                 class="nav-link"
             >Subscribe</a>
+
+            @if (auth()->check())
+            <a
+                href=""
+                class="nav-link"
+            >
+                {{auth()->user()->name}}
+            </a>
+            @endif
+            @if (!auth()->check())
+            <a
+                href="/login"
+                class="nav-link"
+            >Login</a>
+            <a
+                href="/register"
+                class="nav-link"
+            >Register</a>
+            @else
+            <form
+                action="/logout"
+                method="POST"
+            >
+                @csrf
+                <button
+                    type="submit"
+                    class="btn btn-link"
+                >Logout</button>
+            </form>
+            @endif
         </div>
     </div>
 </nav>
