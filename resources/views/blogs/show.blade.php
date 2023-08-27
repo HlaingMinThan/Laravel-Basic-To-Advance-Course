@@ -21,7 +21,35 @@
             </div>
         </div>
     </div>
-    <x-comments />
+
+    @auth
+    <div class="container">
+        <div class="col-md-8 mx-auto">
+            <form
+                action="/blogs/{{$blog->slug}}/comments"
+                method="POST"
+            >
+                @csrf
+                <label for="">Comment here</label>
+                <textarea
+                    name="body"
+                    class="form-control"
+                    id=""
+                    cols="30"
+                    rows="10"
+                ></textarea>
+                @error('body')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <button
+                    type="submit"
+                    class="btn btn-primary my-3"
+                >Comment</button>
+            </form>
+        </div>
+    </div>
+    @endauth
+    <x-comments :comments="$blog->comments()->latest()->get()" />
     <x-subscribe />
     <x-blogs_you_may_like_section :randomBlogs="$randomBlogs" />
 </x-layout>
