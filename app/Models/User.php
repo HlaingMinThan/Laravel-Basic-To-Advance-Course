@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return ucfirst($value); //hlaingminthan => "Hlaingminthan"
     }
+
+    public function subscribedBlogs()
+    {
+        return $this->belongsToMany(Blog::class, 'blogs_users');
+    }
 }

@@ -10,6 +10,21 @@
                 />
                 <h3 class="my-3">{{$blog->title}}</h3>
                 <div>
+                    <div>
+                        @auth
+                        <form
+                            action="{{route('blogs.toggle',$blog->slug)}}"
+                            method="POST"
+                        >
+                            @csrf
+                            @if ($blog->isSubscribed())
+                            <button class="btn btn-danger">unsubscribe</button>
+                            @else
+                            <button class="btn btn-warning">subscribe</button>
+                            @endif
+                        </form>
+                        @endauth
+                    </div>
                     <div>Author - <a href="/users/{{$blog->author->username}}">{{$blog->author->name}}</a></div>
                     <div><a href="/categories/{{$blog->category->slug}}"><span
                                 class="badge bg-primary">{{$blog->category->name}}</span></a></div>
